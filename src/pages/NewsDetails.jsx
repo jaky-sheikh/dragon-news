@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Header from "../components/Header";
 import RightNavbar from "../components/layout-components/RightNavbar";
-
+import Navbar from "../components/Navbar";
 const NewsDetails = () => {
     const data = useLoaderData();
     const news = data.data[0];
@@ -10,6 +10,7 @@ const NewsDetails = () => {
         <div>
             <header className="mt-4">
                 <Header></Header>
+                <Navbar></Navbar>
             </header>
             <h2>Dragon news</h2>
             <main className="w-11/12 mx-auto grid grid-cols-12 gap-5">
