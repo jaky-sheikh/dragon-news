@@ -4,6 +4,7 @@ import { AuthContext } from './../provider/AuthProvider';
 
 const Login = () => {
     const { userLogin, setUser } = useContext(AuthContext);
+
     const [error, setError] = useState({});
     const location = useLocation();
     const navigate = useNavigate();
@@ -44,6 +45,11 @@ const Login = () => {
                                 <span className="label-text">Password</span>
                             </label>
                             <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                            {error.login && (
+                                <label className="label text-sm text-red-600">
+                                    {error.login}
+                                </label>
+                            )}
                             <label className="label">
                                 <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                             </label>

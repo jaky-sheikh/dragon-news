@@ -4,7 +4,7 @@ import { AuthContext } from "../provider/AuthProvider";
 
 const Register = () => {
 
-    const { createNewUser, setUser } = useContext(AuthContext);
+    const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,7 +20,13 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 setUser(user);
-                console.log(user);
+                updateUserProfile({ displayName: name, photoURL: photo })
+                    .then(() => {
+                        navigate("/");
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                    });
             })
             .catch((error) => {
                 const errorCode = error.code;
